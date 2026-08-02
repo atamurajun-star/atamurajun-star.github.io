@@ -1,0 +1,795 @@
+/* =========================================
+   JUN ATAMURA
+   MAIN STYLE
+========================================= */
+
+
+/* =========================================
+   DESIGN VARIABLES
+   ここを変更すると文字サイズなどを
+   全体的に調整できます
+========================================= */
+
+:root {
+
+  /* COLOR */
+
+  --black: #111111;
+  --white: #ffffff;
+
+
+  /* HEADER */
+
+  --header-height: 100px;
+
+
+  /* TEXT SIZE */
+
+  --tagline-size: 10px;
+
+  --header-size: 11px;
+
+  --section-label-size: 11px;
+
+  --item-title-size: 18px;
+
+  --item-text-size: 13px;
+
+  --item-price-size: 13px;
+
+  --about-title-size: 20px;
+
+  --about-text-size: 13px;
+
+
+  /* LETTER SPACING */
+
+  --tracking-small: 0.08em;
+
+  --tracking-wide: 0.15em;
+
+}
+
+
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+
+  box-sizing: border-box;
+
+}
+
+
+html {
+
+  scroll-behavior: smooth;
+
+}
+
+
+body {
+
+  margin: 0;
+
+  padding: 0;
+
+  background: var(--white);
+
+  color: var(--black);
+
+  font-family: "Jost", sans-serif;
+
+  font-weight: 300;
+
+  -webkit-font-smoothing: antialiased;
+
+}
+
+
+img {
+
+  display: block;
+
+  width: 100%;
+
+}
+
+
+a {
+
+  color: inherit;
+
+  text-decoration: none;
+
+}
+
+
+button {
+
+  font-family: inherit;
+
+}
+
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  height: var(--header-height);
+
+  display: grid;
+
+  grid-template-columns: 1fr auto 1fr;
+
+  align-items: flex-start;
+
+  padding: 22px 28px;
+
+  z-index: 100;
+
+  pointer-events: none;
+
+}
+
+
+.header > * {
+
+  pointer-events: auto;
+
+}
+
+
+
+/* =========================================
+   MENU BUTTON
+========================================= */
+
+.menu-button {
+
+  width: 24px;
+
+  height: 20px;
+
+  padding: 0;
+
+  margin: 3px 0 0 0;
+
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+}
+
+
+.menu-button span {
+
+  display: block;
+
+  width: 22px;
+
+  height: 1px;
+
+  background: var(--black);
+
+  transition: 0.3s ease;
+
+}
+
+
+/* X ICON */
+
+.menu-button.active span:nth-child(1) {
+
+  transform:
+    translateY(9px)
+    rotate(45deg);
+
+}
+
+
+.menu-button.active span:nth-child(2) {
+
+  opacity: 0;
+
+}
+
+
+.menu-button.active span:nth-child(3) {
+
+  transform:
+    translateY(-9px)
+    rotate(-45deg);
+
+}
+
+
+
+/* =========================================
+   BRAND
+========================================= */
+
+.header-brand {
+
+  text-align: center;
+
+}
+
+
+.brand-logo {
+
+  width: 160px;
+
+  max-width: 35vw;
+
+  margin: 0 auto;
+
+}
+
+
+.brand-tagline {
+
+  margin-top: 6px;
+
+  font-size: var(--tagline-size);
+
+  line-height: 1.25;
+
+  letter-spacing: var(--tracking-small);
+
+  text-align: center;
+
+}
+
+
+
+/* =========================================
+   CART
+========================================= */
+
+.cart-button {
+
+  justify-self: end;
+
+  margin-top: 2px;
+
+  font-size: var(--header-size);
+
+  letter-spacing: var(--tracking-wide);
+
+}
+
+
+
+/* =========================================
+   MENU OVERLAY
+========================================= */
+
+.menu {
+
+  position: fixed;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  background: rgba(255, 255, 255, 0.97);
+
+  z-index: 90;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease;
+
+}
+
+
+.menu.open {
+
+  opacity: 1;
+
+  visibility: visible;
+
+}
+
+
+.menu-inner {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 20px;
+
+}
+
+
+.menu-inner a {
+
+  font-size: 20px;
+
+  letter-spacing: var(--tracking-wide);
+
+  transition: opacity 0.2s ease;
+
+}
+
+
+.menu-inner a:hover {
+
+  opacity: 0.4;
+
+}
+
+
+
+/* =========================================
+   HERO VIDEO
+========================================= */
+
+.hero-video {
+
+  width: 100%;
+
+  height: 100svh;
+
+  overflow: hidden;
+
+}
+
+
+.hero-video video {
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+}
+
+
+
+/* =========================================
+   ONLINE STORE
+========================================= */
+
+.online-store {
+
+  position: relative;
+
+  padding: 15vw 5vw 10vw;
+
+}
+
+
+.store-title {
+
+  position: absolute;
+
+  top: 7vw;
+
+  right: 5vw;
+
+  font-size: var(--section-label-size);
+
+  letter-spacing: var(--tracking-wide);
+
+}
+
+
+.store-video {
+
+  width: 70vw;
+
+  margin-left: 0;
+
+}
+
+
+.store-video video {
+
+  display: block;
+
+  width: 100%;
+
+  height: auto;
+
+}
+
+
+
+/* =========================================
+   ITEMS
+========================================= */
+
+.items {
+
+  position: relative;
+
+  padding: 12vw 5vw;
+
+}
+
+
+.section-label {
+
+  width: 100%;
+
+  text-align: right;
+
+  margin-bottom: 8vw;
+
+  font-size: var(--section-label-size);
+
+  letter-spacing: var(--tracking-wide);
+
+}
+
+
+
+/* =========================================
+   ITEM
+========================================= */
+
+.item {
+
+  display: grid;
+
+  grid-template-columns: 60% 1fr;
+
+  gap: 8vw;
+
+  align-items: end;
+
+  margin-bottom: 20vw;
+
+}
+
+
+.item-reverse {
+
+  grid-template-columns: 1fr 60%;
+
+}
+
+
+.item-reverse .item-image {
+
+  grid-column: 2;
+
+  grid-row: 1;
+
+}
+
+
+.item-reverse .item-info {
+
+  grid-column: 1;
+
+  grid-row: 1;
+
+}
+
+
+
+/* =========================================
+   ITEM IMAGE
+========================================= */
+
+.item-image {
+
+  width: 100%;
+
+}
+
+
+.item-image img {
+
+  width: 100%;
+
+  height: auto;
+
+}
+
+
+
+/* =========================================
+   ITEM INFO
+========================================= */
+
+.item-info {
+
+  text-align: right;
+
+  padding-bottom: 10px;
+
+}
+
+
+.item-info h2 {
+
+  margin: 0 0 8px;
+
+  font-size: var(--item-title-size);
+
+  font-weight: 400;
+
+  letter-spacing: var(--tracking-small);
+
+}
+
+
+.item-description {
+
+  margin: 0 0 5px;
+
+  font-size: var(--item-text-size);
+
+}
+
+
+.item-year {
+
+  margin: 0 0 40px;
+
+  font-size: var(--item-text-size);
+
+}
+
+
+.item-price {
+
+  margin: 0 0 5px;
+
+  font-size: var(--item-price-size);
+
+}
+
+
+.item-status {
+
+  margin: 0 0 25px;
+
+  font-size: var(--item-text-size);
+
+}
+
+
+.demo-button {
+
+  font-size: var(--item-text-size);
+
+  letter-spacing: var(--tracking-small);
+
+  transition: opacity 0.2s ease;
+
+}
+
+
+.demo-button:hover {
+
+  opacity: 0.4;
+
+}
+
+
+
+/* =========================================
+   ABOUT
+========================================= */
+
+.about {
+
+  padding: 10vw 5vw 20vw;
+
+}
+
+
+.about-content {
+
+  width: 50%;
+
+  margin-left: auto;
+
+  text-align: right;
+
+}
+
+
+.about-content h2 {
+
+  margin: 0 0 20px;
+
+  font-size: var(--about-title-size);
+
+  font-weight: 400;
+
+  letter-spacing: var(--tracking-small);
+
+}
+
+
+.about-content p {
+
+  margin: 0 0 20px;
+
+  font-size: var(--about-text-size);
+
+  line-height: 1.6;
+
+}
+
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+
+  :root {
+
+    --header-height: 80px;
+
+    --tagline-size: 8px;
+
+    --header-size: 10px;
+
+    --section-label-size: 10px;
+
+    --item-title-size: 16px;
+
+    --item-text-size: 12px;
+
+    --about-title-size: 18px;
+
+  }
+
+
+  .header {
+
+    padding: 18px 16px;
+
+  }
+
+
+  .brand-logo {
+
+    width: 130px;
+
+    max-width: 40vw;
+
+  }
+
+
+  .hero-video {
+
+    height: 100svh;
+
+  }
+
+
+  .online-store {
+
+    padding:
+      25vw
+      5vw
+      15vw;
+
+  }
+
+
+  .store-title {
+
+    top: 12vw;
+
+    right: 5vw;
+
+  }
+
+
+  .store-video {
+
+    width: 90vw;
+
+  }
+
+
+  .items {
+
+    padding:
+      20vw
+      5vw;
+
+  }
+
+
+  .item,
+  .item-reverse {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 30px;
+
+    margin-bottom: 30vw;
+
+  }
+
+
+  .item-reverse .item-image {
+
+    order: 1;
+
+  }
+
+
+  .item-reverse .item-info {
+
+    order: 2;
+
+  }
+
+
+  .item-info {
+
+    width: 100%;
+
+    padding: 0;
+
+  }
+
+
+  .about {
+
+    padding:
+      15vw
+      5vw
+      30vw;
+
+  }
+
+
+  .about-content {
+
+    width: 80%;
+
+  }
+
+}
