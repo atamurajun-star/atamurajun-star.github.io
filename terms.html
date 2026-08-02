@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Terms of Use — JUN ATAMURA</title>
+
+
+  <!-- Google Font : Jost -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+
+
+  <style>
+
+    /* =========================================
+       TERMS PAGE
+    ========================================== */
+
+    .terms-page {
+
+      min-height: 100svh;
+
+      position: relative;
+
+    }
+
+
+    /* =========================================
+       TERMS CONTENT
+    ========================================== */
+
+    .terms-content {
+
+      position: absolute;
+
+      top: 52%;
+
+      right: 8vw;
+
+      transform: translateY(-50%);
+
+      width: min(520px, 70vw);
+
+      text-align: right;
+
+    }
+
+
+    .terms-title {
+
+      margin: 0 0 40px;
+
+      font-size: 13px;
+
+      font-weight: 400;
+
+      letter-spacing: 0.15em;
+
+    }
+
+
+    .terms-text {
+
+      margin: 0;
+
+      font-size: 20px;
+
+      line-height: 1.45;
+
+      font-weight: 300;
+
+      letter-spacing: 0.03em;
+
+    }
+
+
+    /* =========================================
+       BACK BUTTON
+    ========================================== */
+
+    .back-button {
+
+      position: absolute;
+
+      left: 5vw;
+
+      bottom: 40px;
+
+      font-size: 10px;
+
+      letter-spacing: 0.15em;
+
+      color: var(--header-amber);
+
+      transition: opacity 0.2s ease;
+
+    }
+
+
+    .back-button:hover {
+
+      opacity: 0.4;
+
+    }
+
+
+    /* =========================================
+       MOBILE
+    ========================================== */
+
+    @media (max-width: 700px) {
+
+
+      .terms-content {
+
+        top: 50%;
+
+        right: 7vw;
+
+        width: 80vw;
+
+      }
+
+
+      .terms-title {
+
+        margin-bottom: 30px;
+
+        font-size: 11px;
+
+      }
+
+
+      .terms-text {
+
+        font-size: 18px;
+
+        line-height: 1.5;
+
+      }
+
+
+      .back-button {
+
+        left: 5vw;
+
+        bottom: 30px;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================================
+       HEADER
+  ========================================== -->
+
+  <header class="header">
+
+
+    <!-- MENU BUTTON -->
+
+    <button
+      class="menu-button"
+      id="menuButton"
+      aria-label="Open menu"
+    >
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </button>
+
+
+
+    <!-- BRAND -->
+
+    <div class="header-brand">
+
+      <a href="index.html">
+
+        <img
+          src="images/junatamura.png"
+          alt="JUN ATAMURA"
+          class="brand-logo"
+        >
+
+      </a>
+
+
+      <div class="brand-tagline">
+
+        objects / garments<br>
+        for the off-peak hours.
+
+      </div>
+
+    </div>
+
+
+
+    <!-- EMPTY RIGHT SIDE -->
+
+    <div class="cart-button">
+
+      <!-- Empty -->
+
+    </div>
+
+
+  </header>
+
+
+
+  <!-- =========================================
+       MENU
+  ========================================== -->
+
+  <nav
+    class="menu"
+    id="menu"
+  >
+
+    <div class="menu-inner">
+
+      <a href="index.html#items">
+        ITEMS
+      </a>
+
+      <a href="index.html#about">
+        ABOUT
+      </a>
+
+      <a href="terms.html">
+        TERMS
+      </a>
+
+      <a href="privacy.html">
+        PRIVACY
+      </a>
+
+    </div>
+
+  </nav>
+
+
+
+  <!-- =========================================
+       TERMS OF USE
+  ========================================== -->
+
+  <main class="terms-page">
+
+
+    <section class="terms-content">
+
+
+      <h1 class="terms-title">
+
+        TERMS OF USE
+
+      </h1>
+
+
+      <p class="terms-text">
+
+        We make things<br>
+        because silence<br>
+        is not always enough.<br>
+        Some objects are useful.<br>
+        Some are not.<br>
+        We do not distinguish<br>
+        between the two.
+
+      </p>
+
+
+    </section>
+
+
+
+    <!-- BACK -->
+
+    <a
+      href="index.html"
+      class="back-button"
+    >
+
+      [ ◁ BACK ]
+
+    </a>
+
+
+  </main>
+
+
+
+  <!-- =========================================
+       JAVASCRIPT
+  ========================================== -->
+
+  <script>
+
+    const menuButton =
+      document.getElementById("menuButton");
+
+    const menu =
+      document.getElementById("menu");
+
+
+    menuButton.addEventListener(
+      "click",
+      () => {
+
+        menu.classList.toggle("open");
+
+        menuButton.classList.toggle("active");
+
+      }
+    );
+
+
+    const menuLinks =
+      document.querySelectorAll(".menu a");
+
+
+    menuLinks.forEach(
+      (link) => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            menu.classList.remove("open");
+
+            menuButton.classList.remove("active");
+
+          }
+        );
+
+      }
+    );
+
+  </script>
+
+
+</body>
+
+</html>
