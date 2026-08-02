@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Cart — JUN ATAMURA</title>
+
+
+  <!-- Google Font : Jost -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+
+  <style>
+
+    /* =========================================
+       CART PAGE
+    ========================================== */
+
+    .cart-page {
+
+      min-height: 100svh;
+
+      display: flex;
+
+      flex-direction: column;
+
+    }
+
+
+    /* =========================================
+       EMPTY CART
+    ========================================== */
+
+    .empty-cart {
+
+      flex: 1;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding:
+        var(--header-height)
+        20px
+        100px;
+
+    }
+
+
+    .empty-cart-icon {
+
+      width: 32px;
+
+      height: auto;
+
+      margin-bottom: 25px;
+
+    }
+
+
+    .empty-cart-message {
+
+      margin: 0;
+
+      font-size: 11px;
+
+      letter-spacing: 0.12em;
+
+      text-align: center;
+
+    }
+
+
+    /* =========================================
+       CONTINUE SHOPPING
+    ========================================== */
+
+    .continue-shopping {
+
+      position: absolute;
+
+      bottom: 40px;
+
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      font-size: 10px;
+
+      letter-spacing: 0.15em;
+
+      color: var(--header-amber);
+
+      transition: opacity 0.2s ease;
+
+    }
+
+
+    .continue-shopping:hover {
+
+      opacity: 0.4;
+
+    }
+
+
+    /* =========================================
+       MOBILE
+    ========================================== */
+
+    @media (max-width: 700px) {
+
+      .empty-cart-icon {
+
+        width: 28px;
+
+      }
+
+      .empty-cart-message {
+
+        font-size: 10px;
+
+      }
+
+      .continue-shopping {
+
+        bottom: 30px;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================================
+       HEADER
+  ========================================== -->
+
+  <header class="header">
+
+
+    <!-- MENU BUTTON -->
+
+    <button
+      class="menu-button"
+      id="menuButton"
+      aria-label="Open menu"
+    >
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </button>
+
+
+
+    <!-- BRAND -->
+
+    <div class="header-brand">
+
+      <a href="index.html">
+
+        <img
+          src="images/logo.png"
+          alt="JUN ATAMURA"
+          class="brand-logo"
+        >
+
+      </a>
+
+
+      <div class="brand-tagline">
+
+        objects / garments<br>
+        for the off-peak hours.
+
+      </div>
+
+    </div>
+
+
+
+    <!-- CART ICON -->
+
+    <div class="cart-button">
+
+      <!-- Empty on cart page -->
+
+    </div>
+
+
+  </header>
+
+
+
+  <!-- =========================================
+       MENU
+  ========================================== -->
+
+  <nav
+    class="menu"
+    id="menu"
+  >
+
+    <div class="menu-inner">
+
+      <a href="index.html#items">
+        ITEMS
+      </a>
+
+      <a href="index.html#about">
+        ABOUT
+      </a>
+
+      <a href="terms.html">
+        TERMS
+      </a>
+
+      <a href="privacy.html">
+        PRIVACY
+      </a>
+
+    </div>
+
+  </nav>
+
+
+
+  <!-- =========================================
+       CART PAGE
+  ========================================== -->
+
+  <main class="cart-page">
+
+
+    <section class="empty-cart">
+
+
+      <img
+        src="images/cart.svg"
+        alt="Cart"
+        class="empty-cart-icon"
+      >
+
+
+      <p class="empty-cart-message">
+
+        there is nothing here yet.
+
+      </p>
+
+
+      <a
+        href="index.html#items"
+        class="continue-shopping"
+      >
+
+        [CONTINUE SHOPPING]
+
+      </a>
+
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- =========================================
+       JAVASCRIPT
+  ========================================== -->
+
+  <script>
+
+    const menuButton =
+      document.getElementById("menuButton");
+
+    const menu =
+      document.getElementById("menu");
+
+
+    menuButton.addEventListener(
+      "click",
+      () => {
+
+        menu.classList.toggle("open");
+
+        menuButton.classList.toggle("active");
+
+      }
+    );
+
+
+    const menuLinks =
+      document.querySelectorAll(".menu a");
+
+
+    menuLinks.forEach(
+      (link) => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            menu.classList.remove("open");
+
+            menuButton.classList.remove("active");
+
+          }
+        );
+
+      }
+    );
+
+  </script>
+
+
+</body>
+
+</html>
