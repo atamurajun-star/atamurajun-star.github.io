@@ -116,7 +116,6 @@ button {
 }
 
 
-
 /* =========================================
    HEADER
 ========================================= */
@@ -192,36 +191,9 @@ button {
 
   height: 1px;
 
-  background: var(--black);
+  background: var(--header-amber);
 
   transition: 0.3s ease;
-
-}
-
-
-/* X ICON */
-
-.menu-button.active span:nth-child(1) {
-
-  transform:
-    translateY(9px)
-    rotate(45deg);
-
-}
-
-
-.menu-button.active span:nth-child(2) {
-
-  opacity: 0;
-
-}
-
-
-.menu-button.active span:nth-child(3) {
-
-  transform:
-    translateY(-9px)
-    rotate(-45deg);
 
 }
 
@@ -261,6 +233,8 @@ button {
 
   text-align: center;
 
+  color: var(--header-amber);
+
 }
 
 
@@ -279,9 +253,9 @@ button {
 
   letter-spacing: var(--tracking-wide);
 
+  color: var(--header-amber);
+
 }
-
-
 
 /* =========================================
    MENU OVERLAY
