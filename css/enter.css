@@ -1,6 +1,9 @@
 /* =========================================
    ENTER SCREEN
 ========================================= */
+body.enter-locked {
+  overflow: hidden;
+}
 
 #enterScreen {
   position: fixed;
