@@ -5,7 +5,8 @@
 const enterScreen = document.getElementById("enterScreen");
 const enterButton = document.getElementById("enterButton");
 
-
+// ENTER画面表示中はスクロール禁止
+document.body.classList.add("enter-locked");
 /* =========================================
    AMBIENT AUDIO
 ========================================= */
@@ -20,13 +21,14 @@ ambient.volume = 0.5;
 /* =========================================
    ENTER
 ========================================= */
-
 enterButton.addEventListener("click", () => {
 
-  // Ambient music start
   ambient.play();
 
-  // Fade out enter screen
   enterScreen.classList.add("hide");
+
+  setTimeout(() => {
+    document.body.classList.remove("enter-locked");
+  }, 1500);
 
 });
