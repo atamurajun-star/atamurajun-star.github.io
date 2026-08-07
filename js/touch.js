@@ -28,9 +28,9 @@ let entered = false;
 enterScreen.addEventListener("click", () => {
 
   // すでにENTER済みなら何もしない
-//  if (entered) return;
+  if (entered) return;
 
-//  entered = true;
+  entered = true;
 
   // Ambient music start
   ambient.play();
