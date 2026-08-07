@@ -16,25 +16,39 @@ document.body.classList.add("enter-locked");
 let hasStarted = false;
 
 // 画面のどこかをタッチ / クリックした時の処理
-function handleStart() {
+function handleStart(e) {
   if (hasStarted) return;
   hasStarted = true;
 
-  // 音声再生を開始（インタラクション直後なのでブラウザのブロックを回避可能）
-  ambient.currentTime = 0;
-  ambient.play().catch((err) => {
-    console.log("Audio play blocked:", err);
-  });
+  // タッチ操作時のデフォルト動作や2重発火を防止
+  if (e && e.type === "touchstart") {
+    e.preventDefault();
+  }
 
-  // ENTER画面をフェードアウト
+  // 1. まず先に play() を呼び出す（ブラウザに「ユーザー操作による再生」と認可させる）
+  const playPromise = ambient.play();
+
+  if (playPromise !== undefined) {
+    playPromise
+      .then(() => {
+        console.log("Audio started successfully!");
+      })
+      .catch((err) => {
+        console.log("Audio play failed:", err);
+      });
+  }
+
+  // 2. ENTER画面をフェードアウト
   enterScreen.classList.add("hide");
 
-  // フェードアウトアニメーション完了後にスクロール制限を解除
+  // 3. フェードアウト完了後にスクロール制限を解除
   setTimeout(() => {
     document.body.classList.remove("enter-locked");
-  }, 1000); // CSSのアニメーション時間に合わせて調整してください
+  }, 1000);
 }
 
-// クリックおよびタッチイベントを登録
+// pointerdown (PC・スマホ双方の最速タッチ・クリック判定) を使用
+enterScreen.addEventListener("pointerdown", handleStart);
+
+// フォールバック（pointerdown非対応環境向け）
 enterScreen.addEventListener("click", handleStart);
-enterScreen.addEventListener("touchstart", handleStart, { passive: true });
