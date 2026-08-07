@@ -117,3 +117,26 @@ window.addEventListener("pageshow", () => {
   }
 
 });
+
+// =========================================
+// 画面タップ/クリックで音声再生を解禁
+// =========================================
+
+// 音声が一度再生されたかどうかのフラグ
+let isAudioPlaying = false;
+
+// 画面全体のどこかをタップ/クリックした時のイベント
+document.addEventListener("click", () => {
+  // すでに鳴っている場合は何もしない
+  if (isAudioPlaying) return;
+
+  // 音声を再生
+  ambient.play()
+    .then(() => {
+      // 無事に再生できたらフラグを立てる
+      isAudioPlaying = true;
+    })
+    .catch((err) => {
+      console.log("Audio play failed:", err);
+    });
+}, { once: true }); // once: true を付けると、一度実行されたらイベントリスナーが自動で削除されます
