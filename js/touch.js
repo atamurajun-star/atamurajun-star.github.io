@@ -44,3 +44,24 @@ enterScreen.addEventListener("click", () => {
   }, 1500);
 
 });
+
+// =========================================
+// BROWSER BACK / PAGESHOW
+// =========================================
+
+window.addEventListener("pageshow", () => {
+
+  // ENTER画面を再表示
+  enterScreen.classList.remove("hide");
+
+  // スクロール禁止
+  document.body.classList.add("enter-locked");
+
+  // ENTER状態をリセット
+  entered = false;
+
+  // Ambientを停止して最初に戻す
+  ambient.pause();
+  ambient.currentTime = 0;
+
+});
