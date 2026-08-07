@@ -115,28 +115,44 @@ window.addEventListener("pageshow", () => {
     });
 
   }
-
-});
-
+   
 // =========================================
-// 画面タップ/クリックで音声再生を解禁
+// ユーザーの操作で音声再生を解禁
 // =========================================
 
-// 音声が一度再生されたかどうかのフラグ
 let isAudioPlaying = false;
 
-// 画面全体のどこかをタップ/クリックした時のイベント
-document.addEventListener("click", () => {
-  // すでに鳴っている場合は何もしない
+// 再生を実行する共通関数
+function startAudio() {
   if (isAudioPlaying) return;
 
-  // 音声を再生
   ambient.play()
     .then(() => {
-      // 無事に再生できたらフラグを立てる
       isAudioPlaying = true;
+      console.log("Audio started!");
+      
+      // 再生が始まったら、もうこのイベントリスナーたちは不要なので削除する
+      removeInteractionListeners();
     })
     .catch((err) => {
-      console.log("Audio play failed:", err);
+      console.log("Audio play blocked, waiting for interaction...");
     });
-}, { once: true }); // once: true を付けると、一度実行されたらイベントリスナーが自動で削除されます
+}
+
+// 複数のイベントを定義する
+const interactionEvents = ['click', 'keydown', 'wheel', 'touchstart', 'touchmove'];
+
+function addInteractionListeners() {
+  interactionEvents.forEach(event => {
+    document.addEventListener(event, startAudio);
+  });
+}
+
+function removeInteractionListeners() {
+  interactionEvents.forEach(event => {
+    document.removeEventListener(event, startAudio);
+  });
+}
+
+// 初期化
+addInteractionListeners();
