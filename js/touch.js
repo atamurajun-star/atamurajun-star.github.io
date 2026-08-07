@@ -1,3 +1,8 @@
+function handleStart(e) {
+  console.log("START");
+  ...
+}
+
 const enterScreen = document.getElementById("enterScreen");
 
 const ambient = new Audio("music/ambient.mp3");
