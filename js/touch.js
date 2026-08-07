@@ -16,7 +16,7 @@ document.body.classList.add("enter-locked");
 const ambient = new Audio("music/ambient.mp3");
 
 ambient.loop = true;
-ambient.volume = 0.5;
+ambient.volume = 0.8;
 
 
 // =========================================
